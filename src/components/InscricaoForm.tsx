@@ -12,7 +12,7 @@ interface InscricaoFormProps {
   getSlotStats: (turno: Turno, horario: Horario) => { count: number; capacity: number; remaining: number };
   blockedList: BlockedMatricula[];
   existingParticipants: Participant[];
-  onSubmitInscricao: (participant: Omit<Participant, 'id' | 'codigoAutenticacao' | 'dataCadastro' | 'status'>) => boolean;
+  onSubmitInscricao: (participant: Omit<Participant, 'id' | 'codigoAutenticacao' | 'dataCadastro' | 'status'>) => Promise<boolean>;
 }
 
 export const InscricaoForm: React.FC<InscricaoFormProps> = ({
@@ -65,7 +65,7 @@ export const InscricaoForm: React.FC<InscricaoFormProps> = ({
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMessage(null);
 
@@ -124,7 +124,7 @@ export const InscricaoForm: React.FC<InscricaoFormProps> = ({
       return;
     }
 
-    const success = onSubmitInscricao({
+    const success = await onSubmitInscricao({
       matricula,
       nome: nome.trim(),
       email: email.trim().toLowerCase(),

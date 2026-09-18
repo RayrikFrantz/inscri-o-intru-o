@@ -25,15 +25,15 @@ import { BlockedMatricula, BannerSettings, Participant, Turno, Horario } from '.
 
 interface AdminAreaProps {
   blockedList: BlockedMatricula[];
-  onUnblock: (matricula: string) => void;
-  onAddBlock: (block: BlockedMatricula) => void;
+  onUnblock: (matricula: string) => Promise<void>;
+  onAddBlock: (block: BlockedMatricula) => Promise<void>;
   onOpenDirectLinkModal: () => void;
   participants: Participant[];
   bannerConfig: BannerSettings;
-  onRemoveParticipant: (id: string) => void;
+  onRemoveParticipant: (id: string) => Promise<void>;
   onAdminAddParticipant: (
     data: Omit<Participant, 'id' | 'codigoAutenticacao' | 'dataCadastro' | 'status'>
-  ) => boolean;
+  ) => Promise<boolean>;
 }
 
 type AdminTab = 'retirar' | 'incluir_extra' | 'bloqueios' | 'exportacoes';
