@@ -1,0 +1,6 @@
+{
+  "name": "Treinamento Mão Inglesa - Mina do Salobo",
+  "description": "Sistema de inscrição e gestão de turmas para o Treinamento Mão Inglesa 2026 no Complexo Salobo com validação de vagas, credencial digital e suporte a links diretos para imagens.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
